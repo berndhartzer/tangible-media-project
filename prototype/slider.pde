@@ -23,45 +23,48 @@ class Slider {
     distFromCentre = 0;
   }
   
-  void display(){
+  void display(float xposition, float yposition){
+    xpos = xposition;
+    ypos = yposition;
+    
     fill(sliderColour);
-    ellipse(xpos, ypos, sliderWidth, sliderHeight);
+    ellipse(xposition, yposition, sliderWidth, sliderHeight);
     // display the text beside the circle, offsetting its position by 25px
     text(distFromCentre, xpos+25, ypos+25);
   }
   
   // Function which checks whether a slider has been clicked on
-  void clicked(int mx, int my) {
-    // Check coords to see if the mouse position is on top of the slider
-    
-    // For an ellipse the x and y coords are in the centre of the shape, so half the width and height 
-    // have to be subtracted from the coords to allow the function to correctly determine if it is being clicked
-    float xPosCorrection = xpos - (sliderWidth / 2);
-    float yPosCorrection = ypos - (sliderHeight / 2);
-    
-    if (mx > xPosCorrection && mx < xpos + sliderWidth && my > yPosCorrection && my < ypos + sliderHeight) {
-      // If so, set dragging to true and keep track of relative location of 
-      // original mouse click and the slider position
-      dragging = true;
-      offsetX = xpos-mx;
-      offsetY = ypos-my;
-    }
-  }
+//  void clicked(int mx, int my) {
+//    // Check coords to see if the mouse position is on top of the slider
+//    
+//    // For an ellipse the x and y coords are in the centre of the shape, so half the width and height 
+//    // have to be subtracted from the coords to allow the function to correctly determine if it is being clicked
+//    float xPosCorrection = xpos - (sliderWidth / 2);
+//    float yPosCorrection = ypos - (sliderHeight / 2);
+//    
+//    if (mx > xPosCorrection && mx < xpos + sliderWidth && my > yPosCorrection && my < ypos + sliderHeight) {
+//      // If so, set dragging to true and keep track of relative location of 
+//      // original mouse click and the slider position
+//      dragging = true;
+//      offsetX = xpos-mx;
+//      offsetY = ypos-my;
+//    }
+//  }
   
   // Stop dragging
-  void stopDragging() {
-    dragging = false;
-  }
+//  void stopDragging() {
+//    dragging = false;
+//  }
   
   // Function which moves a slider if it is being dragged. It changes the xpos and 
   // ypos variables of the slider with the mx and my parameters (mouseX and mouseY),
   // plus the offset value (the relative position of the mouse pointer on the slider
-  void drag(int mx, int my) {
-    if (dragging) {
-      xpos = mx + offsetX;
-      ypos = my + offsetY;
-    }
-  }
+//  void drag(int mx, int my) {
+//    if (dragging) {
+//      xpos = mx + offsetX;
+//      ypos = my + offsetY;
+//    }
+//  }
   
   // Getter for sliders X coordinate
   float getXCoord(){
