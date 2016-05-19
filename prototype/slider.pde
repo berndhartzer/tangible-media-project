@@ -5,6 +5,7 @@ class Slider {
   int sliderWidth;
   int sliderHeight;
   color sliderColour;
+  int distFromCentre;
   
   // movement variables
   boolean dragging = false;
@@ -19,11 +20,14 @@ class Slider {
     sliderColour = colour;
     offsetX = 0;
     offsetY = 0;
+    distFromCentre = 0;
   }
   
   void display(){
     fill(sliderColour);
     ellipse(xpos, ypos, sliderWidth, sliderHeight);
+    // display the text beside the circle, offsetting its position by 25px
+    text(distFromCentre, xpos+25, ypos+25);
   }
   
   // Function which checks whether a slider has been clicked on
@@ -67,6 +71,12 @@ class Slider {
   // Getter for sliders Y coordinate
   float getYCoord(){
     return ypos;
+  }
+    
+  // Setter for the distFromCentre value
+  void setDistFromCentre (float distance){
+    float maxDist = dist(0, 0, width/2, height/2);
+    distFromCentre = int(map(distance, 0, maxDist, 0, 100));
   }
     
 }

@@ -1,5 +1,5 @@
 // Number of sliders on the board
-int numSliders = 4;
+int numSliders = 6;
 
 // Avergae distance of all sliders from the centre 
 float avgDistance;
@@ -25,7 +25,7 @@ void draw(){
   ellipse(width/2, height/2, 475, 475);
   
   // get the average distance of the sliders from the centre
-  avgDistance = getAvergageDistances();
+  avgDistance = getAverageDistances();
   
   // Map the colour values of red and green to the sliders positions
   float maxDist = dist(0, 0, width/2, height/2);
@@ -46,12 +46,15 @@ void draw(){
 
 // This function gets the distance of every slider from the centre of the board
 // and returns the average. This is used to determine the "health" of the board
-float getAvergageDistances (){
+// and update the distFromCentre value of each slider
+float getAverageDistances (){
   
   float totalDistances = 0;
   
   for (int i = 0; i < sliders.length; i++){
-    totalDistances += dist(width/2, height/2, sliders[i].getXCoord(), sliders[i].getYCoord());
+    float distance = dist(width/2, height/2, sliders[i].getXCoord(), sliders[i].getYCoord());
+    sliders[i].setDistFromCentre(distance);
+    totalDistances += distance;
   }
   
   return totalDistances / numSliders;
